@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'idman/style.css' %}" />
+
+{% if latest_idea_list %}
+	<ul>
+	{% for idea in latest_idea_list %}
+		<li><a href="{% url 'idman:detail' idea.id %}">{{ idea.idea_text }}</a></li>
+{% endfor %}
+	</ul>
+{% else %}
+	<p>No ideas are available.</p>
+{% endif %}

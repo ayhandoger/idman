@@ -1,0 +1,7 @@
+<h1>{{ idea.idea_text }}</h1>
+<ul>
+{% for innovator in idea.innovator_set.all %}
+	<li>{{ innovator.innovator_name }} -- {{ innovator.votes }} vote{{ innovator.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'idman:detail' idea.id %}">Vote again?</a>

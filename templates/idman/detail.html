@@ -1,0 +1,14 @@
+<h1>{{ idea.idea_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'idman:vote' idea.id %}" method="post">
+{% csrf_token %}
+{% for innovator in idea.innovator_set.all %}
+	<input type="radio" name="innovator" id="innovator{{ forloop.counter }}" value="{{ innovator.id }}" />
+	<label for="innovator{{ forloop.counter }}">{{ innovator.innovator_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+detail x
+
